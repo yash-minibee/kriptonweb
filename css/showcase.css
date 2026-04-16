@@ -1,0 +1,381 @@
+/*
+ * ============================================================
+ *  PRODUCT SHOWCASE GRID  —  showcase/style.css
+ *  Merge-friendly: all selectors scoped to .psg / .psg-tile
+ *  No global resets — safe to drop into any existing website
+ *
+ *  HOW TO USE:
+ *  <link rel="stylesheet" href="path/to/showcase/style.css">
+ * ============================================================
+ */
+
+/* ── Design tokens (scoped to the section) ─────────────────── */
+.psg {
+    --psg-font:          'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --psg-black:         #0a0a0a;
+    --psg-white:         #ffffff;
+    --psg-gap:           24px;
+    --psg-radius:        8px;
+    --psg-max-w:         1500px;
+    --psg-bg:            #f5f5f5;
+
+    /* Tile colours */
+    --psg-beige:         #ede5d8;
+    --psg-beige-text:    #2a1f14;
+    --psg-brown:         #c8b49a;
+    --psg-brown-text:    #1a1208;
+    --psg-dark-grey:     #3a3a3a;
+    --psg-dark-grey-text:#f0f0f0;
+    --psg-near-black:    #141414;
+    --psg-near-black-text:#e8e8e8;
+}
+
+/* ── Section wrapper ────────────────────────────────────────── */
+.psg {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    padding: 80px 40px;
+    background: var(--psg-bg);
+    font-family: var(--psg-font);
+    -webkit-font-smoothing: antialiased;
+}
+
+.psg__inner {
+    max-width: var(--psg-max-w);
+    margin: 0 auto;
+}
+
+.psg *,
+.psg *::before,
+.psg *::after {
+    box-sizing: border-box;
+}
+
+.psg img {
+    max-width: 100%;
+    display: block;
+}
+
+.psg a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ── Section header ─────────────────────────────────────────── */
+.psg__header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.psg__eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888;
+    font-weight: 500;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.psg__title {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--psg-black);
+    flex: 1;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.psg__view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--psg-black);
+    transition: opacity 0.25s ease;
+    white-space: nowrap;
+    margin-left: auto;
+}
+
+.psg__view-all svg {
+    width: 22px;
+    height: 11px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    transition: transform 0.25s ease;
+}
+
+.psg__view-all:hover     { opacity: 0.5; }
+.psg__view-all:hover svg { transform: translateX(5px); }
+
+/* ── Grid — 6 columns, 24px gap ────────────────────────────── */
+/*
+   Auto-placement result with feature tile as 3rd item:
+   Row 1: [1][2][ BIG ][ BIG ][4][5]
+   Row 2: [6][7][ BIG ][ BIG ][8][9]
+   Row 3: [10][11][12][13][14][ ]
+*/
+.psg__grid {
+    display: grid;
+    max-width: var(--psg-max-w);
+    margin: 0 auto;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-flow: row;
+    gap: var(--psg-gap);
+}
+
+/* ── Base tile — perfect square ─────────────────────────────── */
+.psg-tile {
+    aspect-ratio: 1 / 1;
+    border-radius: var(--psg-radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    will-change: transform;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+
+    /* GSAP scroll-reveal initial state */
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+}
+
+.psg-tile:hover {
+    transform: translate3d(0, 0, 0) scale(1.04);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Colour variants */
+.psg-tile--beige      { background-color: var(--psg-beige);      color: var(--psg-beige-text); }
+.psg-tile--brown      { background-color: var(--psg-brown);      color: var(--psg-brown-text); }
+.psg-tile--dark-grey  { background-color: var(--psg-dark-grey);  color: var(--psg-dark-grey-text); }
+.psg-tile--near-black { background-color: var(--psg-near-black); color: var(--psg-near-black-text); }
+
+/* Product image area */
+.psg-tile__img {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow: hidden;
+}
+
+.psg-tile__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.psg-tile:hover .psg-tile__img img {
+    transform: scale(1.06);
+}
+
+/* Name label row */
+.psg-tile__label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px 12px;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.psg-tile__name {
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    font-family: var(--psg-font);
+}
+
+/* Arrow circle button */
+.psg-tile__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    opacity: 0.35;
+    flex-shrink: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.psg-tile__arrow svg {
+    width: 13px;
+    height: 7px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+}
+
+.psg-tile:hover .psg-tile__arrow {
+    opacity: 1;
+    transform: translateX(3px);
+}
+
+/* ── Feature tile — 3rd item, spans 2 cols × 2 rows ────────── */
+.psg-tile--feature {
+    grid-column: span 2;
+    grid-row: span 2;
+    aspect-ratio: unset;        /* grid area controls size */
+    transition: box-shadow 0.4s ease;
+}
+
+/* Feature tile: no scale on hover, only shadow + bg zoom */
+.psg-tile--feature:hover {
+    transform: translate3d(0, 0, 0);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.14);
+}
+
+/* Background image layer — set via inline style on the element */
+.psg-tile__feature-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.7s ease;
+}
+
+.psg-tile--feature:hover .psg-tile__feature-bg {
+    transform: scale(1.05);
+}
+
+/* Left-to-right dark gradient */
+.psg-tile__feature-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.75) 0%,
+        rgba(0, 0, 0, 0.35) 55%,
+        rgba(0, 0, 0, 0.06) 100%
+    );
+}
+
+/* Text content — left-aligned, vertically centred */
+.psg-tile__feature-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 44px 40px;
+    gap: 1.1rem;
+}
+
+.psg-tile__feature-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 500;
+    margin: 0;
+    font-family: var(--psg-font);
+}
+
+.psg-tile__feature-heading {
+    font-size: clamp(32px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--psg-white);
+    max-width: 10ch;
+    margin: 0;
+    font-family: var(--psg-font);
+}
+
+.psg-tile__feature-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--psg-white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: 3px;
+    width: fit-content;
+    transition: border-color 0.25s ease;
+    font-family: var(--psg-font);
+}
+
+.psg-tile__feature-link svg {
+    width: 22px;
+    height: 11px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    transition: transform 0.25s ease;
+}
+
+.psg-tile--feature:hover .psg-tile__feature-link     { border-color: var(--psg-white); }
+.psg-tile--feature:hover .psg-tile__feature-link svg { transform: translateX(5px); }
+
+/* ── Responsive — Tablet (≤ 1024px) ────────────────────────── */
+@media (max-width: 1024px) {
+    .psg {
+        padding: 48px 24px 64px;
+    }
+
+    .psg__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .psg-tile--feature {
+        grid-column: span 2;
+        grid-row: span 1;
+        aspect-ratio: 2 / 1;
+    }
+
+    .psg-tile__feature-content {
+        padding: 32px 28px;
+    }
+}
+
+/* ── Responsive — Mobile (≤ 600px) ─────────────────────────── */
+@media (max-width: 600px) {
+    .psg {
+        padding: 32px 16px 48px;
+    }
+
+    .psg__grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .psg-tile--feature {
+        grid-column: span 1;
+        grid-row: span 1;
+        aspect-ratio: 4 / 3;
+    }
+
+    .psg-tile__feature-content {
+        padding: 28px 24px;
+    }
+
+    .psg__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+    }
+
+    .psg__view-all {
+        margin-left: 0;
+    }
+}
