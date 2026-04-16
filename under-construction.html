@@ -1,0 +1,430 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="images/logo.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Under Construction â€“ Kripton</title>
+
+    <style>
+        /* â”€â”€ Under Construction hero â”€â”€ */
+        .uc-hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0a0a0a;
+            overflow: hidden;
+            /* account for 2-row header */
+            padding-top: calc(5rem + 2.75rem);
+        }
+
+        /* Subtle animated background gradient */
+        .uc-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(242,115,33,0.12) 0%, transparent 70%);
+            animation: pulse 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { opacity: 0.6; transform: scale(1); }
+            to   { opacity: 1;   transform: scale(1.08); }
+        }
+
+        .uc-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 3rem 2rem;
+            max-width: 700px;
+        }
+
+        /* Kripton orange accent line */
+        .uc-line {
+            width: 3rem;
+            height: 2px;
+            background-color: #f27321;
+            margin: 0 auto 2.5rem;
+        }
+
+        .uc-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #f27321;
+            margin-bottom: 1.5rem;
+        }
+
+        .uc-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 200;
+            letter-spacing: 0.04em;
+            line-height: 1.1;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+        }
+
+        .uc-desc {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.7;
+            max-width: 480px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Animated progress bar */
+        .uc-progress {
+            width: 100%;
+            max-width: 320px;
+            height: 2px;
+            background: rgba(255,255,255,0.1);
+            margin: 0 auto 3rem;
+            overflow: hidden;
+        }
+
+        .uc-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #f27321;
+            animation: load 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes load {
+            0%   { width: 0%; }
+            60%  { width: 75%; }
+            100% { width: 65%; }
+        }
+
+        .uc-progress-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+            margin-top: 0.75rem;
+        }
+
+        /* Back to home link */
+        .uc-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            padding-bottom: 2px;
+            transition: color 0.25s ease, border-color 0.25s ease;
+        }
+
+        .uc-back:hover {
+            color: #ffffff;
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        /* Floating product image â€” decorative */
+        .uc-deco {
+            position: absolute;
+            right: 6%;
+            bottom: 8%;
+            width: clamp(180px, 22vw, 320px);
+            opacity: 0.12;
+            pointer-events: none;
+            filter: grayscale(1);
+        }
+
+        @media (max-width: 768px) {
+            .uc-deco { display: none; }
+            .uc-hero { padding-top: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- SVG sprite (same as index.html) -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+        <symbol viewBox="0 0 32 32" id="occ-burger">
+            <path d="M3 11.6h26.6c.3 0 .6-.3.6-.6s-.3-.6-.6-.6H3c-.3 0-.6.3-.6.6s.3.6.6.6zM29.6 21H3c-.3 0-.6.3-.6.6s.3.6.6.6h26.6c.3 0 .6-.3.6-.6s-.3-.6-.6-.6z"/>
+        </symbol>
+        <symbol viewBox="0 0 24 24" id="occ-close">
+            <path d="M18 18.6c-.1 0-.3-.1-.4-.2L12 12.8l-5.6 5.6c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8l5.6-5.6-5.6-5.6c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l5.6 5.6 5.6-5.6c.2-.2.6-.2.8 0 .2.2.2.6 0 .8L12.8 12l5.6 5.6c.2.2.2.6 0 .8-.1.1-.3.2-.4.2z"/>
+        </symbol>
+        <symbol viewBox="0 0 24 24" id="occ-caret-right">
+            <path d="m16.4 11.6-7-7c-.2-.2-.6-.2-.8 0s-.2.6 0 .8l6.6 6.6-6.6 6.6c-.2.2-.2.6 0 .8.2.2.6.2.8 0l7-7c.3-.2.3-.6 0-.8z"/>
+        </symbol>
+        <symbol viewBox="0 0 24 24" id="occ-arrow-left">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.611 18.389a.55.55 0 1 0 .778-.778L6.33 12.55H19a.55.55 0 0 0 0-1.1H6.328l5.061-5.061a.55.55 0 1 0-.778-.778l-5.999 6a.548.548 0 0 0-.008.771l.008.008 6 5.999z"/>
+        </symbol>
+        <symbol viewBox="0 0 32 32" id="occ-pin">
+            <path d="M16.1 2.4C10.5 2.4 6 6.9 6 12.5c0 6.1 8.7 14.9 9.7 15.9l.4.4.4-.4c1-1 9.7-9.9 9.7-15.9 0-5.6-4.5-10.1-10.1-10.1zm0 24.7c-3.5-3.5-8.9-10.2-8.9-14.6 0-4.9 4-8.9 8.9-8.9s8.9 4 8.9 8.9c0 4.4-5.4 11.1-8.9 14.6z"/><path d="M16.1 7.4c-2.8 0-5.1 2.3-5.1 5.1s2.3 5.1 5.1 5.1 5.1-2.3 5.1-5.1-2.3-5.1-5.1-5.1zm0 9c-2.2 0-3.9-1.8-3.9-3.9s1.7-3.9 3.9-3.9 3.9 1.7 3.9 3.9-1.7 3.9-3.9 3.9z"/>
+        </symbol>
+        <symbol viewBox="0 0 32 32" id="occ-shopping-bag">
+            <path d="M25.3 11.7c-.2-1.5-1.5-2.7-3-2.7h-2.7V8c0-2-1.6-3.6-3.6-3.6S12.4 6 12.4 8v1H9.7c-1.5 0-2.8 1.1-3 2.7L5 27h22l-1.7-15.3zM13.6 8c0-1.3 1.1-2.4 2.4-2.4s2.4 1.1 2.4 2.4v1h-4.8V8zm-5.7 3.8c.1-.9.9-1.6 1.8-1.6h2.7V13c0 .3.3.6.6.6s.6-.3.6-.6v-2.8h4.8V13c0 .3.3.6.6.6s.6-.3.6-.6v-2.8h2.7c.9 0 1.7.7 1.8 1.6l1.6 14H6.3l1.6-14z"/>
+        </symbol>
+        <symbol viewBox="0 0 24 24" id="occ-download">
+            <path d="M12 16l-5-5 .7-.7 3.8 3.8V4h1v10.1l3.8-3.8.7.7-5 5zM5 19v1h14v-1H5z"/>
+        </symbol>
+    </svg>
+
+    <!-- =============================================
+         HEADER â€” exact copy from index.html
+    ============================================= -->
+    <header id="Header" class="Header" role="banner">
+
+        <div class="Header-overlay js-Header-overlay" aria-hidden="true"></div>
+
+        <div class="Header-inner">
+
+            <div class="HeaderBar">
+
+                <div class="HeaderBar-leftGroup">
+                    <button class="HeaderBar-btn js-HeaderBar-menuOpen"
+                            aria-label="Open navigation"
+                            aria-controls="main-menu"
+                            aria-expanded="false">
+                        <svg class="HeaderBar-icon" aria-hidden="true" focusable="false">
+                            <use href="#occ-burger"></use>
+                        </svg>
+                    </button>
+                    <a href="#" class="HeaderMeta-consultLink HeaderBar-consultLink">
+                        Book a consultation
+                    </a>
+                </div>
+
+                <a href="index.html" class="HeaderBar-logo" aria-label="Kripton â€“ go to homepage">
+                    <img src="images/logo.svg" alt="Kripton" class="HeaderBar-logoImg">
+                </a>
+
+                <nav class="HeaderMeta" aria-label="Meta navigation">
+                    <ul class="HeaderMeta-list">
+                        <li class="HeaderMeta-item">
+                            <a href="#" class="HeaderMeta-iconLink" aria-label="Find a store Careers">
+                                <svg class="HeaderMeta-icon" aria-hidden="true" focusable="false">
+                                    <use href="#occ-pin"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="HeaderMeta-item">
+                            <a href="#" class="HeaderMeta-iconLink" aria-label="Shopping bag">
+                                <svg class="HeaderMeta-icon" aria-hidden="true" focusable="false">
+                                    <use href="#occ-shopping-bag"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="HeaderMeta-item HeaderMeta-item--brochure">
+                            <a href="#" class="HeaderMeta-brochureBtn">
+                                <svg class="HeaderMeta-brochureIcon" aria-hidden="true" focusable="false">
+                                    <use href="#occ-download"></use>
+                                </svg>
+                                Brochure
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+
+            <!-- Mobile drawer -->
+            <div id="main-menu" class="HeaderDrawer js-HeaderDrawer"
+                 aria-hidden="true" role="dialog" aria-label="Main navigation">
+                <div class="HeaderDrawer-topBar">
+                    <a href="index.html" class="HeaderDrawer-logo" aria-label="Kripton">
+                        <img src="images/logo.svg" alt="Kripton" class="HeaderBar-logoImg HeaderBar-logoImg--dark">
+                    </a>
+                    <button class="HeaderDrawer-closeBtn js-HeaderDrawer-close"
+                            aria-label="Close navigation" aria-controls="main-menu">
+                        <svg class="HeaderDrawer-closeIcon" aria-hidden="true" focusable="false">
+                            <use href="#occ-close"></use>
+                        </svg>
+                    </button>
+                </div>
+                <nav class="HeaderNav" aria-label="Primary navigation">
+                    <ul class="HeaderNav-list">
+                        <li class="HeaderNav-item">
+                            <button class="HeaderNav-link js-HeaderNav-toggle"
+                                    aria-controls="sub-products" aria-expanded="false">
+                                <span>Products</span>
+                                <svg class="HeaderNav-caret" aria-hidden="true" focusable="false">
+                                    <use href="#occ-caret-right"></use>
+                                </svg>
+                            </button>
+                            <div id="sub-products" class="HeaderNav-submenu js-HeaderNav-submenu" aria-hidden="true">
+                                <button class="HeaderNav-backBtn js-HeaderNav-back" aria-label="Back to main menu">
+                                    <svg aria-hidden="true" focusable="false"><use href="#occ-arrow-left"></use></svg>
+                                    <span>Products</span>
+                                </button>
+                                <ul class="HeaderNav-subList">
+                                    <li><a href="#" class="HeaderNav-subLink">Signature Series</a></li>
+                                    <li><a href="#" class="HeaderNav-subLink">Classic Series</a></li>
+                                    <li><a href="#" class="HeaderNav-subLink">Core Series</a></li>
+                                    <li><a href="#" class="HeaderNav-subLink">Nowa Series</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="HeaderNav-item">
+                            <a href="#" class="HeaderNav-link HeaderNav-link--plain">
+                                <span>Integrations</span>
+                                <svg class="HeaderNav-caret" aria-hidden="true" focusable="false">
+                                    <use href="#occ-caret-right"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="HeaderNav-item">
+                            <a href="#" class="HeaderNav-link HeaderNav-link--plain">
+                                <span>About Us</span>
+                                <svg class="HeaderNav-caret" aria-hidden="true" focusable="false">
+                                    <use href="#occ-caret-right"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="HeaderNav-item">
+                            <a href="#" class="HeaderNav-link HeaderNav-link--plain">
+                                <span>Contact</span>
+                                <svg class="HeaderNav-caret" aria-hidden="true" focusable="false">
+                                    <use href="#occ-caret-right"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="HeaderDrawer-brochure">
+                    <a href="#" class="HeaderDrawer-brochureBtn">
+                        <svg class="HeaderDrawer-brochureIcon" aria-hidden="true" focusable="false">
+                            <use href="#occ-download"></use>
+                        </svg>
+                        Brochure
+                    </a>
+                </div>
+            </div>
+
+            <!-- Desktop second nav row -->
+            <nav class="HeaderMenuBar" aria-label="Desktop primary navigation">
+                <ul class="HeaderMenuBar-list">
+                    <li class="HeaderMenuBar-item">
+                        <a href="#" class="HeaderMenuBar-link">Products</a>
+                    </li>
+                    <li class="HeaderMenuBar-item">
+                        <a href="#" class="HeaderMenuBar-link">Integrations</a>
+                    </li>
+                    <li class="HeaderMenuBar-item">
+                        <a href="#" class="HeaderMenuBar-link">About Us</a>
+                    </li>
+                    <li class="HeaderMenuBar-item">
+                        <a href="#" class="HeaderMenuBar-link">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- =============================================
+         MAIN â€” Under Construction hero
+    ============================================= -->
+    <main id="main-content">
+
+        <section class="uc-hero" aria-label="Under construction">
+
+            <!-- Decorative product image -->
+            <img class="uc-deco"
+                 src="images/KRIPTON PRODUCT IMAGE/Render/SIGNATURE SERIES/JAZZ WHITE.png"
+                 alt="" aria-hidden="true">
+
+            <div class="uc-content">
+                <div class="uc-line"></div>
+                <p class="uc-eyebrow">Coming Soon</p>
+                <h1 class="uc-title">This page is under<br>construction.</h1>
+                <p class="uc-desc">
+                    We're working hard to bring you something great.
+                    Check back soon or head back to the homepage.
+                </p>
+
+                <!-- Animated progress bar -->
+                <div class="uc-progress">
+                    <div class="uc-progress-bar"></div>
+                </div>
+                <p class="uc-progress-label">Work in progress</p>
+
+                <br><br>
+
+                <a href="index.html" class="uc-back">
+                    â† Back to homepage
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- =============================================
+         FOOTER â€” exact copy from index.html
+    ============================================= -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <p class="footer-brand-logo">Kripton</p>
+                    <p class="footer-brand-desc">
+                        Kripton creates a new culture of light through precision-engineered lighting systems that integrate cutting-edge technology and timeless design.
+                    </p>
+                    <div class="footer-social" aria-label="Social media links">
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Kripton on Instagram">In</a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Kripton on Facebook">Fb</a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Kripton on LinkedIn">Li</a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Kripton on YouTube">Yt</a>
+                    </div>
+                </div>
+                <nav aria-label="Products navigation">
+                    <p class="footer-col-title">Products</p>
+                    <ul class="footer-links">
+                        <li><a href="#">Signature Series</a></li>
+                        <li><a href="#">Classic Series</a></li>
+                        <li><a href="#">Core Series</a></li>
+                        <li><a href="#">Nowa Series</a></li>
+                    </ul>
+                </nav>
+                <nav aria-label="Company navigation">
+                    <p class="footer-col-title">Company</p>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Integrations</a></li>
+                        <li><a href="#">For Professionals</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </nav>
+                <nav aria-label="Service navigation">
+                    <p class="footer-col-title">Service</p>
+                    <ul class="footer-links">
+                        <li><a href="#">Dealer Finder</a></li>
+                        <li><a href="#">Book a Visit</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Brochure</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2026 Kripton. All rights reserved.</p>
+                <nav class="footer-legal" aria-label="Legal navigation">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Imprint</a>
+                    <a href="#">Cookie Settings</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>
+
