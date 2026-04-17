@@ -354,23 +354,18 @@
 
 })();
 
-
-    // ─── Products dropdown: series card hover → preview image swap ────────────
-    // When the user hovers a series card, the large preview image on the right
-    // cross-fades to the matching image for that series.
-
+// ─── Products dropdown: series card hover → preview image swap ────────────
+(function () {
     var seriesCards   = document.querySelectorAll('.DropSeries-card');
     var previewImages = document.querySelectorAll('.DropPreview-img');
+
+    if (!seriesCards.length) return;
 
     seriesCards.forEach(function (card) {
         card.addEventListener('mouseenter', function () {
             var index = card.getAttribute('data-index');
-
-            // Highlight the active card
             seriesCards.forEach(function (c) { c.classList.remove('is-hovered'); });
             card.classList.add('is-hovered');
-
-            // Swap preview image
             previewImages.forEach(function (img) {
                 if (img.getAttribute('data-preview') === index) {
                     img.classList.add('is-active');
@@ -379,8 +374,41 @@
                 }
             });
         });
-
         card.addEventListener('mouseleave', function () {
             card.classList.remove('is-hovered');
         });
     });
+}());
+
+
+// ─── Contact form ─────────────────────────────────────────────────────────────
+
+(function () {
+    var form = document.querySelector('.contact-form');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Basic validation
+        var required = form.querySelectorAll('[required]');
+        var valid = true;
+
+        required.forEach(function (field) {
+            field.style.borderBottomColor = '';
+            if (!field.value.trim()) {
+                field.style.borderBottomColor = '#c0392b';
+                valid = false;
+            }
+        });
+
+        if (!valid) return;
+
+        // Show success message
+        form.innerHTML = [
+            '<div class="contact-form__success" style="display:block">',
+            '  <p>Thank you for reaching out. A member of the Kripton team will be in touch shortly.</p>',
+            '</div>'
+        ].join('');
+    });
+}());

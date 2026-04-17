@@ -2,15 +2,6 @@
    Kripton – Main Stylesheet
    ============================================ */
 
-/* --- Outfit Font --- */
-@font-face {
-    font-family: 'Outfit';
-    src: url('../fonts/Outfit/Outfit-VariableFont_wght.ttf') format('truetype');
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
-}
-
 /* --- Reset & Base --- */
 *,
 *::before,
@@ -27,7 +18,7 @@
     --gray-mid: #e0e0e0;
     --gray-dark: #6b6b6b;
     --accent: #c8a96e;
-    --font: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --ease: 0.3s ease;
     --max-w: 1440px;
 }
@@ -1173,11 +1164,11 @@ p {
 
     .editorial-split__image-col {
         height: 60vw;
-        min-height: 280px;
+        min-height: 320px;
     }
 
     .editorial-split__image-wrap {
-        inset: 1.5rem;
+        inset: 2rem;
     }
 
     .editorial-split__text-col {
@@ -1187,34 +1178,15 @@ p {
     .editorial-split__text-inner {
         max-width: 100%;
     }
-
-    .editorial-split__heading {
-        white-space: normal;
-        font-size: clamp(1.4rem, 5vw, 2.4rem);
-    }
 }
 
 @media (max-width: 480px) {
-    .editorial-split__image-col {
-        height: 70vw;
-        min-height: 220px;
-    }
-
-    .editorial-split__image-wrap {
-        inset: 1rem;
-    }
-
     .editorial-split__heading {
-        font-size: clamp(1.3rem, 6vw, 2rem);
-        white-space: normal;
+        font-size: clamp(2.8rem, 12vw, 4rem);
     }
 
-    .editorial-split__body {
-        font-size: 0.9rem;
-    }
-
-    .editorial-split__text-col {
-        padding: 2rem 1.5rem 3rem;
+    .editorial-split__image-col {
+        height: 75vw;
     }
 }
 .marquee-section {
@@ -1648,14 +1620,6 @@ p {
     color: rgba(255, 255, 255, 0.5);
     font-size: 0.75rem;
     transition: var(--ease);
-}
-
-.footer-social a svg {
-    width: 15px;
-    height: 15px;
-    stroke: currentColor;
-    fill: none;
-    flex-shrink: 0;
 }
 
 .footer-social a:hover {

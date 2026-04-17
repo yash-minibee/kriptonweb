@@ -11,7 +11,7 @@
 
 /* ── Design tokens (scoped to the section) ─────────────────── */
 .psg {
-    --psg-font:          'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --psg-font: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --psg-black:         #0a0a0a;
     --psg-white:         #ffffff;
     --psg-gap:           24px;
