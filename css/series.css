@@ -1,0 +1,297 @@
+/* ============================================
+   Kripton – Series Page
+   ============================================ */
+
+/* ── Scroll reveal ─────────────────────────── */
+.sr {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.sr-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Series section wrapper ────────────────── */
+.series-section {
+    border-bottom: 1px solid #e8e4de;
+}
+
+/* ── Series Hero ───────────────────────────── */
+.series-hero {
+    position: relative;
+    height: 65vh;
+    min-height: 420px;
+    background-size: cover;
+    background-position: center;
+    background-color: #0a0a0a;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.series-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.78) 0%,
+        rgba(0,0,0,0.25) 55%,
+        rgba(0,0,0,0.08) 100%
+    );
+}
+
+.series-hero__content {
+    position: relative;
+    z-index: 2;
+    padding: 3.5rem 5rem 4rem;
+    max-width: 760px;
+}
+
+.series-hero__eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    font-family: var(--font);
+}
+
+.series-hero__title {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 200;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-family: var(--font);
+}
+
+.series-hero__desc {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.75;
+    max-width: 560px;
+    font-family: var(--font);
+}
+
+/* ── Products container ────────────────────── */
+.series-products {
+    padding: 4rem 5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3px;
+    background: #f5f5f5;
+}
+
+/* ── Product Card ──────────────────────────── */
+.product-card-full {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    background: #ffffff;
+    overflow: hidden;
+    border: 1px solid #e8e4de;
+    transition: box-shadow 0.35s ease;
+}
+
+.product-card-full:hover {
+    box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+    z-index: 1;
+    position: relative;
+}
+
+/* Reverse layout — image right */
+.product-card-full--reverse {
+    direction: rtl;
+}
+
+.product-card-full--reverse > * {
+    direction: ltr;
+}
+
+.product-card-full--reverse .product-card-full__info-col {
+    border-left: none;
+    border-right: 1px solid #e8e4de;
+}
+
+/* ── Main image column ─────────────────────── */
+.product-card-full__img-col {
+    background: #f7f5f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    overflow: hidden;
+}
+
+.product-card-full__main-img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.product-card-full:hover .product-card-full__main-img {
+    transform: scale(1.04);
+}
+
+/* ── Info column ───────────────────────────── */
+.product-card-full__info-col {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    border-left: 1px solid #e8e4de;
+}
+
+.product-card-full--reverse .product-card-full__info-col {
+    border-left: none;
+    border-right: 1px solid #e8e4de;
+}
+
+/* Secondary image */
+.product-card-full__sec-img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background: #ede9e3;
+    padding: 1.5rem;
+    border-bottom: 1px solid #e8e4de;
+    transition: transform 0.5s ease;
+}
+
+.product-card-full:hover .product-card-full__sec-img {
+    transform: scale(1.03);
+}
+
+/* Name + code row */
+.product-card-full__name-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 2rem;
+    border-bottom: 1px solid #e8e4de;
+    flex-wrap: wrap;
+}
+
+.product-card-full__name {
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: #0a0a0a;
+    font-family: var(--font);
+    margin: 0;
+}
+
+.product-card-full__code {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #888;
+    font-family: var(--font);
+    white-space: nowrap;
+}
+
+/* Specs table */
+.product-card-full__specs {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font);
+}
+
+.product-card-full__specs tr {
+    border-bottom: 1px solid #f0ece6;
+}
+
+.product-card-full__specs tr:last-child {
+    border-bottom: none;
+}
+
+.product-card-full__specs th,
+.product-card-full__specs td {
+    padding: 0.75rem 2rem;
+    text-align: left;
+    font-weight: 400;
+    vertical-align: middle;
+}
+
+.product-card-full__specs th {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #888;
+    width: 40%;
+}
+
+.product-card-full__specs td {
+    font-size: 0.88rem;
+    color: #0a0a0a;
+}
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 1024px) {
+    .series-hero__content { padding: 3rem 3rem 3.5rem; }
+    .series-products { padding: 3rem; grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .series-hero { height: 55vw; min-height: 320px; }
+    .series-hero__content { padding: 2rem 2rem 2.5rem; }
+    .series-products { padding: 1rem; gap: 2px; grid-template-columns: 1fr; }
+
+    /* Stack card vertically on mobile */
+    .product-card-full,
+    .product-card-full--reverse {
+        grid-template-columns: 1fr;
+        direction: ltr;
+    }
+
+    .product-card-full__info-col {
+        border-left: none;
+        border-right: none;
+        border-top: 1px solid #e8e4de;
+    }
+
+    .product-card-full__img-col {
+        padding: 2rem;
+    }
+
+    .product-card-full__main-img {
+        max-height: 280px;
+    }
+
+    .product-card-full__sec-img {
+        height: 160px;
+    }
+
+    .product-card-full__specs th,
+    .product-card-full__specs td {
+        padding: 0.65rem 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .series-hero { height: 70vw; }
+    .series-hero__title { font-size: clamp(1.6rem, 7vw, 2.5rem); }
+}
+
+/* ── Not found message ─────────────────────── */
+.series-not-found {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    font-family: var(--font);
+    font-size: 1rem;
+    color: #888;
+    text-align: center;
+}
+
+.series-not-found a {
+    color: #0a0a0a;
+    border-bottom: 1px solid currentColor;
+}

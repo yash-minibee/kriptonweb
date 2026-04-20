@@ -39,12 +39,26 @@
     // CSS uses this class to switch from transparent to white background.
 
     function handleScroll() {
-        if (window.scrollY > 10) {
+        var currentY = window.scrollY;
+
+        // Scrolled state (white bg)
+        if (currentY > 10) {
             header.classList.add('is-scrolled');
         } else {
             header.classList.remove('is-scrolled');
         }
+
+        // Hide on scroll down, show on scroll up
+        if (currentY > lastScrollY && currentY > 80) {
+            header.classList.add('is-hidden');
+        } else {
+            header.classList.remove('is-hidden');
+        }
+
+        lastScrollY = currentY;
     }
+
+    var lastScrollY = window.scrollY;
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // run once on load so state is correct immediately
@@ -411,4 +425,102 @@
             '</div>'
         ].join('');
     });
+}());
+
+
+// ─── Brochure gate modal ──────────────────────────────────────────────────────
+(function () {
+    'use strict';
+
+    var modal     = document.getElementById('brochureModal');
+    var form      = document.getElementById('brochureForm');
+    var closeBtns = document.querySelectorAll('.js-brochure-close');
+
+    // Path to your brochure PDF — update when file is ready
+    var BROCHURE_PATH = 'other-resourses/kripton-brochure.pdf';
+
+    if (!modal || !form) return;
+
+    /* Open modal when any brochure button/link is clicked */
+    document.addEventListener('click', function (e) {
+        var trigger = e.target.closest('.HeaderMeta-brochureBtn, .HeaderNav-brochureLink, .HeaderDrawer-brochureBtn');
+        if (!trigger) return;
+        e.preventDefault();
+        openModal();
+    });
+
+    /* Close buttons */
+    closeBtns.forEach(function (btn) {
+        btn.addEventListener('click', closeModal);
+    });
+
+    /* Close on backdrop click */
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+    });
+
+    /* Close on Escape */
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    function openModal() {
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        var firstInput = form.querySelector('input');
+        if (firstInput) setTimeout(function () { firstInput.focus(); }, 100);
+    }
+
+    function closeModal() {
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+    }
+
+    /* Form validation + download */
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var nameInput  = document.getElementById('bf-name');
+        var emailInput = document.getElementById('bf-email');
+        var valid = true;
+
+        /* Validate name */
+        if (!nameInput.value.trim()) {
+            nameInput.classList.add('is-error');
+            valid = false;
+        } else {
+            nameInput.classList.remove('is-error');
+        }
+
+        /* Validate email */
+        var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim());
+        if (!emailOk) {
+            emailInput.classList.add('is-error');
+            valid = false;
+        } else {
+            emailInput.classList.remove('is-error');
+        }
+
+        if (!valid) return;
+
+        /* Trigger download */
+        var link = document.createElement('a');
+        link.href     = BROCHURE_PATH;
+        link.download = 'Kripton-Brochure.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        /* Close modal after short delay */
+        setTimeout(closeModal, 400);
+        form.reset();
+    });
+
+    /* Clear error state on input */
+    form.querySelectorAll('.brochure-form__input').forEach(function (input) {
+        input.addEventListener('input', function () {
+            input.classList.remove('is-error');
+        });
+    });
+
 }());

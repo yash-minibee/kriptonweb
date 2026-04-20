@@ -209,7 +209,11 @@ p {
     right: 0;
     z-index: 1000;
     background: transparent;
-    transition: background var(--ease);
+    transition: background var(--ease), transform 0.35s ease;
+}
+
+.Header.is-hidden {
+    transform: translateY(-100%);
 }
 
 .Header.is-scrolled {
@@ -981,9 +985,9 @@ p {
 .gallery-panel-bg {
     position: absolute;
     inset: 0;
-    background-size: contain;
+    background-size: 75%;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center 30%;
     background-color: #5c5650;
     transition: transform 0.6s ease;
 }

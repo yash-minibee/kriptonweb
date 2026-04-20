@@ -14,9 +14,9 @@
     --psg-font: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --psg-black:         #0a0a0a;
     --psg-white:         #ffffff;
-    --psg-gap:           24px;
-    --psg-radius:        8px;
-    --psg-max-w:         1500px;
+    --psg-gap:           20px;
+    --psg-radius:        4px;
+    --psg-max-w:         1300px;
     --psg-bg:            #f5f5f5;
 
     /* Tile colours */
