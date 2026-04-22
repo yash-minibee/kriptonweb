@@ -144,63 +144,14 @@
             ─────────────────────────────────────────────── -->
             <div class="HeaderBar">
 
-                <!-- Left: hamburger (mobile) + Book a consultation (desktop) -->
-                <div class="HeaderBar-leftGroup">
-
-                    <button class="HeaderBar-btn js-HeaderBar-menuOpen" aria-label="Open navigation"
-                        aria-controls="main-menu" aria-expanded="false">
-                        <svg class="HeaderBar-icon" aria-hidden="true" focusable="false">
-                            <use href="#occ-burger"></use>
-                        </svg>
-                    </button>
-
-                    <!-- Book a consultation — desktop only, left side -->
-                    <a href="under-construction.html" class="HeaderMeta-consultLink HeaderBar-consultLink">
-                        Book a consultation
-                    </a>
-
-                </div>
+                <button class="HeaderBar-btn js-HeaderBar-menuOpen" aria-label="Open navigation" aria-controls="main-menu" aria-expanded="false">
+                    <svg class="HeaderBar-icon" aria-hidden="true" focusable="false"><use href="#occ-burger"></use></svg>
+                </button>
 
                 <!-- Centre: logo -->
                 <a href="index.html" class="HeaderBar-logo" aria-label="Kripton – go to homepage">
                     <img src="images/logo.svg" alt="Kripton" class="HeaderBar-logoImg">
                 </a>
-
-                <!-- Right: meta navigation -->
-                <nav class="HeaderMeta" aria-label="Meta navigation">
-                    <ul class="HeaderMeta-list">
-
-                        <!-- Store finder -->
-                        <li class="HeaderMeta-item">
-                            <a href="under-construction.html" class="HeaderMeta-iconLink"
-                                aria-label="Find a store near you">
-                                <svg class="HeaderMeta-icon" aria-hidden="true" focusable="false">
-                                    <use href="#occ-pin"></use>
-                                </svg>
-                            </a>
-                        </li>
-
-                        <!-- Shopping bag -->
-                        <li class="HeaderMeta-item">
-                            <a href="under-construction.html" class="HeaderMeta-iconLink" aria-label="Shopping bag">
-                                <svg class="HeaderMeta-icon" aria-hidden="true" focusable="false">
-                                    <use href="#occ-shopping-bag"></use>
-                                </svg>
-                            </a>
-                        </li>
-
-                        <!-- Brochure — desktop only, right side -->
-                        <li class="HeaderMeta-item HeaderMeta-item--brochure">
-                            <a href="under-construction.html" class="HeaderMeta-brochureBtn">
-                                <svg class="HeaderMeta-brochureIcon" aria-hidden="true" focusable="false">
-                                    <use href="#occ-download"></use>
-                                </svg>
-                                Brochure
-                            </a>
-                        </li>
-
-                    </ul>
-                </nav>
 
 
             </div>
@@ -229,76 +180,31 @@
                 <!-- Primary nav list -->
                 <nav class="HeaderNav" aria-label="Primary navigation">
                     <ul class="HeaderNav-list">
-
-                        <!-- Products (has submenu) -->
                         <li class="HeaderNav-item">
-                            <button class="HeaderNav-link js-HeaderNav-toggle" aria-controls="sub-products"
-                                aria-expanded="false">
+                            <button class="HeaderNav-link js-HeaderNav-toggle" aria-controls="sub-products-index" aria-expanded="false">
                                 <span>Products</span>
-                                <svg class="HeaderNav-caret" aria-hidden="true" focusable="false">
-                                    <use href="#occ-caret-right"></use>
-                                </svg>
+                                <svg class="HeaderNav-caret" aria-hidden="true" focusable="false"><use href="#occ-caret-right"></use></svg>
                             </button>
-                            <div id="sub-products" class="HeaderNav-submenu js-HeaderNav-submenu" aria-hidden="true">
+                            <div id="sub-products-index" class="HeaderNav-submenu js-HeaderNav-submenu" aria-hidden="true">
                                 <button class="HeaderNav-backBtn js-HeaderNav-back" aria-label="Back to main menu">
-                                    <svg aria-hidden="true" focusable="false">
-                                        <use href="#occ-arrow-left"></use>
-                                    </svg>
+                                    <svg aria-hidden="true" focusable="false"><use href="#occ-arrow-left"></use></svg>
                                     <span>Products</span>
                                 </button>
                                 <ul class="HeaderNav-subList">
-                                    <li><a href="series.html" class="HeaderNav-subLink">All Products</a>
-                                    </li>
-                                    <li><a href="under-construction.html" class="HeaderNav-subLink">Ceiling &amp;
-                                            Wall</a></li>
-                                    <li><a href="under-construction.html" class="HeaderNav-subLink">Pendant</a></li>
-                                    <li><a href="under-construction.html" class="HeaderNav-subLink">Table &amp;
-                                            Floor</a></li>
-                                    <li><a href="under-construction.html" class="HeaderNav-subLink">Outdoor</a></li>
+                                    <li><a href="series.html?series=signature" class="HeaderNav-subLink">Signature Series</a></li>
+                                    <li><a href="series.html?series=classic" class="HeaderNav-subLink">Classic Series</a></li>
+                                    <li><a href="series.html?series=core" class="HeaderNav-subLink">Core Series</a></li>
+                                    <li><a href="series.html?series=nowa" class="HeaderNav-subLink">Nowa Series</a></li>
+                                    <li><a href="series.html" class="HeaderNav-subLink">All Series</a></li>
                                 </ul>
                             </div>
                         </li>
-
-                        <!-- Integrations (direct link) -->
+                        <li class="HeaderNav-item"><a href="under-construction.html" class="HeaderNav-link HeaderNav-link--plain"><span>Integrations</span><svg class="HeaderNav-caret" aria-hidden="true" focusable="false"><use href="#occ-caret-right"></use></svg></a></li>
+                        <li class="HeaderNav-item"><a href="about.html" class="HeaderNav-link HeaderNav-link--plain"><span>About Us</span><svg class="HeaderNav-caret" aria-hidden="true" focusable="false"><use href="#occ-caret-right"></use></svg></a></li>
+                        <li class="HeaderNav-item"><a href="contact.html" class="HeaderNav-link HeaderNav-link--plain"><span>Contact</span><svg class="HeaderNav-caret" aria-hidden="true" focusable="false"><use href="#occ-caret-right"></use></svg></a></li>
                         <li class="HeaderNav-item">
-                            <a href="under-construction.html" class="HeaderNav-link HeaderNav-link--plain">
-                                <span>Integrations</span>
-                                <svg class="HeaderNav-caret" aria-hidden="true" focusable="false">
-                                    <use href="#occ-caret-right"></use>
-                                </svg>
-                            </a>
+                            <a href="#" class="HeaderNav-link HeaderNav-link--plain js-brochure-open"><span>Resources</span><svg class="HeaderNav-caret" aria-hidden="true" focusable="false"><use href="#occ-caret-right"></use></svg></a>
                         </li>
-
-                        <!-- About us (direct link) -->
-                        <li class="HeaderNav-item">
-                            <a href="about.html" class="HeaderNav-link HeaderNav-link--plain">
-                                <span>About Us</span>
-                                <svg class="HeaderNav-caret" aria-hidden="true" focusable="false">
-                                    <use href="#occ-caret-right"></use>
-                                </svg>
-                            </a>
-                        </li>
-
-                        <!-- Contact (direct link) -->
-                        <li class="HeaderNav-item">
-                            <a href="contact.html" class="HeaderNav-link HeaderNav-link--plain">
-                                <span>Contact</span>
-                                <svg class="HeaderNav-caret" aria-hidden="true" focusable="false">
-                                    <use href="#occ-caret-right"></use>
-                                </svg>
-                            </a>
-                        </li>
-
-                        <!-- Brochure -->
-                        <li class="HeaderNav-item HeaderNav-item--brochure">
-                            <a href="under-construction.html" class="HeaderNav-brochureLink">
-                                <svg class="HeaderNav-brochureIcon" aria-hidden="true" focusable="false">
-                                    <use href="#occ-download"></use>
-                                </svg>
-                                Brochure
-                            </a>
-                        </li>
-
                     </ul>
                 </nav>
 
@@ -338,7 +244,7 @@
 
                     <!-- Products — has dropdown -->
                     <li class="HeaderMenuBar-item js-DropItem">
-                        <a href="series.html" class="HeaderMenuBar-link js-DropTrigger" aria-haspopup="true"
+                        <a href="#" class="HeaderMenuBar-link js-DropTrigger" aria-haspopup="true"
                             aria-expanded="false">
                             Products
                         </a>
@@ -409,6 +315,9 @@
                                                 <path d="M5 12h14M13 6l6 6-6 6" />
                                             </svg>
                                         </a>
+                                        <a href="series.html" class="DropPreview-cta">
+                                            View all series →
+                                        </a>
 
                                     </div>
                                 </div>
@@ -429,9 +338,9 @@
                                             src="images/KRIPTON PRODUCT IMAGE/EDITED EMAGE/GLINT.jpg"
                                             alt="Nowa Series preview" data-preview="3">
                                     </div>
-                                    <a href="series.html" class="DropPreview-cta">
-                                        View all products →
-                                    </a>
+                                    <!-- <a href="series.html" class="DropPreview-cta">
+                                        View all series →
+                                    </a> -->
                                 </div>
 
                             </div>
@@ -457,6 +366,10 @@
                         <a href="contact.html" class="HeaderMenuBar-link">
                             Contact
                         </a>
+                    </li>
+
+                    <li class="HeaderMenuBar-item">
+                        <a href="#" class="HeaderMenuBar-link js-brochure-open">Resources</a>
                     </li>
 
                 </ul>
@@ -1149,6 +1062,7 @@
                         <li><a href="series.html?series=classic">Classic Series</a></li>
                         <li><a href="series.html?series=core">Core Series</a></li>
                         <li><a href="series.html?series=nowa">Nowa Series</a></li>
+                        <li><a href="series.html">All Series</a></li>
                     </ul>
                 </nav>
                 <nav aria-label="Company navigation">
@@ -1320,10 +1234,26 @@
             });
 
             window.addEventListener('mouseup', function () {
-                if (!isDragging) return;
+                isDragging = false;
+                strip.style.cursor = 'grab';
+            });
+
+            /* Pause on hover, resume on leave */
+            strip.addEventListener('mouseenter', function () { isPaused = true; });
+            strip.addEventListener('mouseleave', function () { isPaused = false; });
+
+            /* Release drag if mouse leaves the browser window */
+            window.addEventListener('pointercancel', function () {
                 isDragging = false;
                 isPaused = false;
                 strip.style.cursor = 'grab';
+            });
+
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    isDragging = false;
+                    isPaused = false;
+                }
             });
 
             // Start the loop

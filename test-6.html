@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kripton Focus Cone Layout</title>
+
+<style>
+:root {
+  --bg:#0b0b0c;
+  --card:#141416;
+  --text:#e6e6e6;
+  --muted:#8a8a8a;
+  --accent:#d6a85f;
+}
+
+body {
+  margin:0;
+  background:var(--bg);
+  font-family:Segoe UI;
+  color:var(--text);
+}
+
+/* SECTION */
+.section {
+  padding:80px 40px;
+  text-align:center;
+}
+
+/* CONE WRAPPER */
+.cone {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:40px;
+}
+
+/* ROWS */
+.row {
+  display:flex;
+  justify-content:center;
+  gap:30px;
+}
+
+/* CARD */
+.card {
+  background:var(--card);
+  border-radius:18px;
+  padding:12px;
+  transition:.4s;
+  position:relative;
+  overflow:hidden;
+}
+
+.card:hover {
+  transform:translateY(-10px);
+}
+
+/* IMAGE */
+.card img {
+  width:100%;
+  height:120px;
+  object-fit:contain;
+}
+
+/* TEXT */
+.name { font-size:14px; }
+.code { font-size:11px; color:var(--muted); }
+
+/* SIZES */
+.small { width:140px; }
+.medium { width:180px; }
+.large { width:240px; }
+
+/* LIGHT EFFECT */
+.cone::before {
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle at top, rgba(214,168,95,0.25), transparent 70%);
+  z-index:-1;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="section">
+<h2 style="color:var(--accent)">Focus Cone Layout</h2>
+
+<div class="cone" id="cone"></div>
+
+</div>
+
+<script>
+
+/* PRODUCT DATA (YOUR DATA) */
+const products = [
+{name:"Jazz",code:"KR-SIG-J12",specs:["12W","3000K"],img:"images/KRIPTON PRODUCT IMAGE/Render/SIGNATURE SERIES/JAZZ WHITE.png"},
+{name:"Sora",code:"KR-SIG-S07",specs:["7W","4000K"],img:"images/KRIPTON PRODUCT IMAGE/Render/SIGNATURE SERIES/SORA 7W WHITE.png"},
+{name:"Colt",code:"KR-SIG-C18",specs:["18W"],img:"images/KRIPTON PRODUCT IMAGE/Render/SIGNATURE SERIES/COLT 18W WHITE.png"},
+{name:"Lumera",code:"KR-SIG-L12",specs:["12W"],img:"images/KRIPTON PRODUCT IMAGE/Render/SIGNATURE SERIES/LUMERA WHITE.png"},
+{name:"Evan",code:"KR-SIG-E12",specs:["12W","3000K","CRI 90+"],img:"images/KRIPTON PRODUCT IMAGE/Render/SIGNATURE SERIES/EVAN 12W WHITE.png"},
+{name:"Glint",code:"KR-SIG-G12",specs:["12W"],img:"images/KRIPTON PRODUCT IMAGE/Render/SIGNATURE SERIES/GLINT 12W BLACK.png"},
+{name:"Dusk",code:"KR-SIG-D12",specs:["12W"],img:"images/KRIPTON PRODUCT IMAGE/Render/SIGNATURE SERIES/DUSK 12W WHITE.png"},
+{name:"Pure",code:"KR-SIG-P12",specs:["12W"],img:"images/KRIPTON PRODUCT IMAGE/Render/SIGNATURE SERIES/PURE WHITE.png"},
+{name:"Parox",code:"KR-SIG-PX12",specs:["12W"],img:"images/KRIPTON PRODUCT IMAGE/Render/SIGNATURE SERIES/PAROX 12W WHITE.png"},
+{name:"Titan",code:"KR-SIG-T12",specs:["12W"],img:"images/KRIPTON PRODUCT IMAGE/Render/SIGNATURE SERIES/TITAN ROUND WHITE.png"},
+{name:"Ray",code:"KR-SIG-R9",specs:["9W"],img:"images/KRIPTON PRODUCT IMAGE/Render/SIGNATURE SERIES/RAY 9W WHITE.png"},
+{name:"Zola",code:"KR-SIG-Z7",specs:["7W"],img:"images/KRIPTON PRODUCT IMAGE/Render/SIGNATURE SERIES/ZOLA_7W WHITE.png"}
+];
+
+/* DISTRIBUTION (CONE SHAPE) */
+const topRow = products.slice(0,2);
+const midRow = products.slice(2,6);
+const bottomRow = products.slice(6,12);
+
+const cone = document.getElementById("cone");
+
+/* CREATE ROW */
+function createRow(items, sizeClass) {
+  const row = document.createElement("div");
+  row.className = "row";
+
+  items.forEach(p => {
+    const card = document.createElement("div");
+    card.className = `card ${sizeClass}`;
+
+    card.innerHTML = `
+      <img src="${p.img}">
+      <div class="name">${p.name}</div>
+      <div class="code">${p.code}</div>
+    `;
+
+    row.appendChild(card);
+  });
+
+  return row;
+}
+
+/* RENDER */
+cone.appendChild(createRow(topRow,"small"));
+cone.appendChild(createRow(midRow,"medium"));
+cone.appendChild(createRow(bottomRow,"large"));
+
+</script>
+
+</body>
+</html>

@@ -443,7 +443,7 @@
 
     /* Open modal when any brochure button/link is clicked */
     document.addEventListener('click', function (e) {
-        var trigger = e.target.closest('.HeaderMeta-brochureBtn, .HeaderNav-brochureLink, .HeaderDrawer-brochureBtn');
+        var trigger = e.target.closest('.HeaderMeta-brochureBtn, .HeaderNav-brochureLink, .HeaderDrawer-brochureBtn, .js-brochure-open');
         if (!trigger) return;
         e.preventDefault();
         openModal();

@@ -241,15 +241,33 @@ p {
 .HeaderBar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 1.25rem 2rem;
+    justify-content: center;
+    padding: 2rem 2rem;
     position: relative;
 }
 
-.HeaderBar-leftGroup {
-    display: flex;
+/* Hamburger — mobile only, positioned left */
+.HeaderBar-btn {
+    display: none;
+    position: absolute;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--white);
     align-items: center;
-    gap: 1.5rem;
+    padding: 4px;
+    transition: opacity var(--ease);
+}
+
+.Header.is-scrolled .HeaderBar-btn { color: var(--black); }
+.HeaderBar-btn:hover { opacity: 0.6; }
+.HeaderBar-icon { width: 24px; height: 24px; fill: currentColor; }
+
+@media (max-width: 1023px) {
+    .HeaderBar-btn { display: flex; }
 }
 
 .HeaderBar-btn {
@@ -257,9 +275,10 @@ p {
     border: none;
     cursor: pointer;
     color: var(--white);
-    display: flex;
+    display: inline-block;
     align-items: center;
     padding: 4px;
+    margin: 8px 0px;
     transition: opacity var(--ease);
 }
 
@@ -301,7 +320,7 @@ p {
 }
 
 .HeaderBar-logoImg {
-    height: 56px;
+    height: 48px;
     width: auto;
     filter: brightness(0) invert(1);
     transition: filter var(--ease);
@@ -628,7 +647,7 @@ p {
 /* HeaderMenuBar – desktop second row */
 .HeaderMenuBar {
     display: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    /* border-top: 1px solid rgba(255, 255, 255, 0.15); */
 }
 
 .Header.is-scrolled .HeaderMenuBar {
@@ -650,7 +669,7 @@ p {
 
 .HeaderMenuBar-link {
     display: block;
-    padding: 0.85rem 1.5rem;
+    padding: 1.1rem 1.5rem;
     font-size: 0.78rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -989,11 +1008,6 @@ p {
     background-repeat: no-repeat;
     background-position: center 30%;
     background-color: #5c5650;
-    transition: transform 0.6s ease;
-}
-
-.gallery-panel:hover .gallery-panel-bg {
-    transform: scale(1.04);
 }
 
 .gallery-panel-overlay {
