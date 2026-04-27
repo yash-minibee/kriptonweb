@@ -55,17 +55,61 @@
         var section = el('section', 'series-section');
         section.id = series.id;
 
-        /* Hero */
+        /* Hero — unchanged */
         section.appendChild(buildHero(series));
 
-        /* Products */
-        var productsWrap = el('div', 'series-products');
-        series.products.forEach(function (product, pIndex) {
-            /* Row 0 (cards 0,1) = normal, Row 1 (cards 2,3) = reverse, alternating */
-            var reverse = Math.floor(pIndex / 2) % 2 !== 0;
-            productsWrap.appendChild(buildProductCard(product, reverse));
+        /* Product cards — product-card-3 design */
+        var grid = el('div', 'series-card-grid' + (series.fullWidthCards ? ' series-card-grid--full' : ''));
+
+        series.products.forEach(function (product, i) {
+            /* Full-width mode (e.g. Nowa series) */
+            if (product.fullWidth || series.fullWidthCards) {
+                var fullCard = el('article', 'sc sc--full sr');
+                fullCard.innerHTML = [
+                    '<div class="sc__img sc__img--full">',
+                    '  <img src="' + product.mainImage + '" alt="' + product.name + '" loading="lazy">',
+                    '</div>',
+                    '<div class="sc__content sc__content--full">',
+                    '  <div>',
+                    '    <h3 class="sc__name">' + product.name + '</h3>',
+                    '    <p class="sc__code">' + product.code + '</p>',
+                    '  </div>',
+                    '  <span class="sc__watt">' + (product.specs[0] ? product.specs[0].value : '') + '</span>',
+                    '</div>'
+                ].join('');
+                grid.appendChild(fullCard);
+                return;
+            }
+
+            /* Every card is horizontal; rows 0,2,4… are normal, rows 1,3,5… are reversed */
+            var row = Math.floor(i / 3);
+            var isReversed = row % 2 === 1;
+            var imgAlign = row % 2 === 0 ? 'sc--img-bottom' : 'sc--img-top';
+            var cardClass = 'sc sc--h ' + imgAlign + (isReversed ? ' sc--h-rev' : '') + ' sr';
+            var card = el('article', cardClass);
+
+            card.innerHTML = [
+                '<div class="sc__img">',
+                '  <img src="' + product.mainImage + '" alt="' + product.name + '" loading="lazy">',
+                '</div>',
+                '<div class="sc__content">',
+                '  <div>',
+                '    <h3 class="sc__name">' + product.name + '</h3>',
+                '    <p class="sc__code">' + product.code + '</p>',
+                '  </div>',
+                '  <span class="sc__watt">' + (product.specs[0] ? product.specs[0].value : '') + '</span>',
+                '</div>'
+            ].join('');
+
+            grid.appendChild(card);
         });
-        section.appendChild(productsWrap);
+
+        section.appendChild(grid);
+
+        /* Footer image gallery */
+        if (series.footerRows && series.footerRows.length) {
+            section.appendChild(buildFooterGallery(series.footerRows));
+        }
 
         return section;
     }
@@ -96,65 +140,32 @@
         return hero;
     }
 
-    function buildProductCard(product, reverse) {
-        var card = el('article', 'product-card-full sr' + (reverse ? ' product-card-full--reverse' : ''));
-
-        /* ── Left: main image ── */
-        var imgCol = el('div', 'product-card-full__img-col');
-        var mainImg = el('img', 'product-card-full__main-img');
-        mainImg.src     = product.mainImage;
-        mainImg.alt     = product.name;
-        mainImg.loading = 'lazy';
-        imgCol.appendChild(mainImg);
-
-        /* ── Right: secondary image + info ── */
-        var infoCol = el('div', 'product-card-full__info-col');
-
-        /* Secondary image */
-        var secImg = el('img', 'product-card-full__sec-img');
-        secImg.src     = product.secondaryImage;
-        secImg.alt     = product.name + ' – alternate view';
-        secImg.loading = 'lazy';
-
-        /* Name + code row */
-        var nameRow = el('div', 'product-card-full__name-row');
-        var name    = el('h3', 'product-card-full__name');
-        name.textContent = product.name;
-        var code = el('span', 'product-card-full__code');
-        code.textContent = product.code;
-        nameRow.appendChild(name);
-        nameRow.appendChild(code);
-
-        /* Specs table */
-        var table = el('table', 'product-card-full__specs');
-        var tbody = document.createElement('tbody');
-        product.specs.slice(0, 3).forEach(function (spec) {
-            var row = document.createElement('tr');
-            var th  = document.createElement('th');
-            var td  = document.createElement('td');
-            th.textContent = spec.label;
-            td.textContent = spec.value;
-            row.appendChild(th);
-            row.appendChild(td);
-            tbody.appendChild(row);
-        });
-        table.appendChild(tbody);
-
-        infoCol.appendChild(secImg);
-        infoCol.appendChild(nameRow);
-        infoCol.appendChild(table);
-
-        card.appendChild(imgCol);
-        card.appendChild(infoCol);
-
-        return card;
-    }
-
     /* ── Helper: create element with class ── */
     function el(tag, className) {
         var node = document.createElement(tag);
         if (className) node.className = className;
         return node;
+    }
+
+    function buildFooterGallery(rows) {
+        var gallery = document.createElement('div');
+        gallery.className = 'sfg';
+        rows.forEach(function(rowImages) {
+            var row = document.createElement('div');
+            row.className = 'sfg__row';
+            rowImages.forEach(function(item) {
+                var cell = document.createElement('div');
+                cell.className = item.type === 'landscape' ? 'sfg__l' : 'sfg__p';
+                var img = document.createElement('img');
+                img.src = item.src;
+                img.alt = '';
+                img.loading = 'lazy';
+                cell.appendChild(img);
+                row.appendChild(cell);
+            });
+            gallery.appendChild(row);
+        });
+        return gallery;
     }
 
 }());

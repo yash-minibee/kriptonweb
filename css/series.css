@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    Kripton – Series Page
    ============================================ */
 
@@ -294,4 +294,292 @@
 .series-not-found a {
     color: #0a0a0a;
     border-bottom: 1px solid currentColor;
+}
+
+/* ============================================
+   Product Card 3 design — used in series page
+   ============================================ */
+
+/* Grid container replacing old series-products */
+.series-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 290px;
+    gap: 0px;
+    padding: 2rem 5rem 4rem;
+    background: #FAF7EE;
+}
+
+/* Card base */
+.sc {
+    background: #FAF7EE;
+    border-radius: 0px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    position: relative;
+}
+
+.sc:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.09);
+    z-index: 2;
+}
+
+/* Horizontal — image left, detail right */
+.sc--h { grid-column: span 1; grid-row: span 1; flex-direction: row; }
+
+/* Reversed horizontal — detail left, image right */
+.sc--h-rev { flex-direction: row-reverse; }
+
+/* Full-width card — spans all 3 columns, image fills width */
+/* Full-width series grid (e.g. Nowa) */
+.series-card-grid--full {
+    grid-auto-rows: 200px;
+    gap: 0;
+}
+
+/* Full-width card — spans all 3 columns, same style as regular cards */
+.sc--full {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    height: 200px;
+}
+
+.sc--full .sc__img--full {
+    width: 75%;
+    height: 100%;
+    flex-shrink: 0;
+    background: #FAF7EE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.sc--full .sc__img--full img {
+    width: 85%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.sc--full:hover .sc__img--full img { transform: scale(1.04); }
+
+.sc--full .sc__content--full {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border-left: 1px solid #FAF7EE;
+    position: relative;
+    overflow: hidden;
+}
+
+.sc--full .sc__content--full .sc__watt {
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+}
+
+/* Image */
+.sc__img {
+    background: #FAF7EE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Odd rows (0,2,4…) — image anchored to bottom */
+.sc--img-bottom .sc__img { align-items: flex-end; justify-content: center; }
+
+/* Even rows (1,3,5…) — image anchored to top */
+.sc--img-top .sc__img { align-items: flex-start; justify-content: center; }
+
+.sc--h .sc__img,
+.sc--h-rev .sc__img { width: 45%; height: 100%; }
+
+.sc__img img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.sc:hover .sc__img img { transform: scale(1.04); }
+
+/* Content */
+.sc__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px 14px;
+    position: relative;
+    overflow: hidden;
+}
+
+.sc--h .sc__content,
+.sc--h-rev .sc__content { width: 55%; border-left: 1px solid #FAF7EE; }
+
+/* Name */
+.sc__name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #0a0a0a;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    font-family: var(--font, 'Outfit', sans-serif);
+}
+
+.sc__name::after {
+    content: '';
+    display: block;
+    width: 1.25rem;
+    height: 1px;
+    background: #c8a96e;
+    margin-top: 5px;
+    transition: width 0.3s ease;
+}
+
+.sc:hover .sc__name::after { width: 2.5rem; }
+
+/* Code */
+.sc__code {
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #6b6b6b;
+    margin-top: 3px;
+    font-family: var(--font, 'Outfit', sans-serif);
+}
+
+/* Watt — bottom right */
+.sc__watt {
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: #6b6b6b;
+    font-family: var(--font, 'Outfit', sans-serif);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .series-card-grid { padding: 2rem 3rem 3rem; }
+}
+
+@media (max-width: 768px) {
+    .series-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 160px;
+        padding: 1.5rem;
+    }
+
+    /* Nowa full-width cards on tablet */
+    .series-card-grid--full {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        gap: 0;
+    }
+
+    .sc--full {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .sc--full .sc__img--full {
+        width: 100%;
+        height: 220px;
+    }
+
+    .sc--full .sc__content--full {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid #e0e0e0;
+        padding: 12px 14px;
+        min-height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .series-card-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+    .sc, .sc--h, .sc--h-rev { flex-direction: column; }
+    .sc__img, .sc--h .sc__img, .sc--h-rev .sc__img { width: 100%; height: 160px; }
+    .sc__content, .sc--h .sc__content, .sc--h-rev .sc__content {
+        width: 100%; height: auto;
+        border-left: none; border-top: 1px solid #e0e0e0;
+    }
+
+    /* Nowa full-width cards on mobile */
+    .sc--full .sc__img--full { height: 180px; }
+}
+
+/* ============================================
+   Series Footer Gallery
+   Each row: 2 portrait (flex:1) + 1 landscape (flex:2)
+   ============================================ */
+.sfg {
+    background: #FAF7EE;
+    padding: 3rem 5rem 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sfg__row {
+    display: flex;
+    gap: 4px;
+    height: 75vh;
+}
+
+.sfg__p {
+    flex: 1;
+    overflow: hidden;
+}
+
+.sfg__l {
+    flex: 2;
+    overflow: hidden;
+}
+
+.sfg__p img,
+.sfg__l img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.sfg__p:hover img,
+.sfg__l:hover img {
+    transform: scale(1.04);
+}
+
+@media (max-width: 1024px) {
+    .sfg { padding: 2rem 3rem 4rem; }
+    .sfg__row { height: 55vh; }
+}
+
+@media (max-width: 768px) {
+    .sfg { padding: 1.5rem; }
+    .sfg__row { height: 38vw; }
+}
+
+@media (max-width: 480px) {
+    .sfg__row { flex-direction: column; height: auto; }
+    .sfg__p, .sfg__l { height: 60vw; flex: none; }
 }

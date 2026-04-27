@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
@@ -152,11 +152,20 @@
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- SVG sprite (same as index.html) -->
+    <!-- =============================================
+         INLINE SVG ICON SPRITE
+         All icons used in the header are defined here
+         once and referenced with <use href="#id">
+    ============================================= -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+
+        <!-- Kripton logo symbol (unused, img tag used instead) -->
         <symbol viewBox="0 0 81 20" id="occ-logo">
-            <path d="M17.81 9.86C17.81 4.35 14.507 0 8.919 0 3.305 0 0 4.35 0 9.86s3.305 9.86 8.918 9.86c5.588 0 8.893-4.35 8.893-9.86zm-16.656 0c0-4.825 2.859-8.858 7.764-8.858 4.879 0 7.738 4.033 7.738 8.858s-2.86 8.858-7.738 8.858c-4.905 0-7.764-4.033-7.764-8.858zm30.61.053c-.288-3.085-2.648-4.508-5.56-4.508-3.987 0-6.19 3.19-6.19 6.96s1.81 7.223 6.19 7.223c2.912 0 5.246-1.846 5.693-5.088H30.9c-.341 2.478-2.177 4.218-4.695 4.218-3.49 0-5.194-2.69-5.194-6.354 0-3.084 1.81-6.09 5.194-6.09 2.439 0 4.38 1.24 4.564 3.639h.996zm14.14 0c-.289-3.085-2.65-4.508-5.561-4.508-3.988 0-6.191 3.19-6.191 6.96s1.81 7.223 6.19 7.223c2.912 0 5.247-1.846 5.693-5.088h-.997c-.341 2.478-2.177 4.218-4.695 4.218-3.49 0-5.194-2.69-5.194-6.354 0-3.084 1.81-6.09 5.194-6.09 2.439 0 4.38 1.24 4.564 3.639h.997zm2.99-9.465v18.824h.996v-7.33c0-3.32 1.837-5.667 4.854-5.667 3.671 0 3.829 3.03 3.829 4.429v8.568h.997v-8.383c0-1.662-.053-5.484-4.801-5.484-2.098 0-4.144 1.186-4.826 3.216h-.053V.448h-.996zM63.53 19.272h.997V5.721h-.997v13.551zm0-16.108h.997V.448h-.997v2.716zm4.302 9.306c0 3.98 2.282 7.118 6.584 7.118S81 16.45 81 12.47c0-4.007-2.282-7.144-6.584-7.144s-6.584 3.137-6.584 7.144zm2.36 0c0-3.322 1.89-5.167 4.224-5.167 2.335 0 4.223 1.845 4.223 5.167 0 3.296-1.888 5.14-4.223 5.14s-4.224-1.844-4.224-5.14z"/>
+            <path
+                d="M17.81 9.86C17.81 4.35 14.507 0 8.919 0 3.305 0 0 4.35 0 9.86s3.305 9.86 8.918 9.86c5.588 0 8.893-4.35 8.893-9.86zm-16.656 0c0-4.825 2.859-8.858 7.764-8.858 4.879 0 7.738 4.033 7.738 8.858s-2.86 8.858-7.738 8.858c-4.905 0-7.764-4.033-7.764-8.858zm30.61.053c-.288-3.085-2.648-4.508-5.56-4.508-3.987 0-6.19 3.19-6.19 6.96s1.81 7.223 6.19 7.223c2.912 0 5.246-1.846 5.693-5.088H30.9c-.341 2.478-2.177 4.218-4.695 4.218-3.49 0-5.194-2.69-5.194-6.354 0-3.084 1.81-6.09 5.194-6.09 2.439 0 4.38 1.24 4.564 3.639h.996zm14.14 0c-.289-3.085-2.65-4.508-5.561-4.508-3.988 0-6.191 3.19-6.191 6.96s1.81 7.223 6.19 7.223c2.912 0 5.247-1.846 5.693-5.088h-.997c-.341 2.478-2.177 4.218-4.695 4.218-3.49 0-5.194-2.69-5.194-6.354 0-3.084 1.81-6.09 5.194-6.09 2.439 0 4.38 1.24 4.564 3.639h.997zm2.99-9.465v18.824h.996v-7.33c0-3.32 1.837-5.667 4.854-5.667 3.671 0 3.829 3.03 3.829 4.429v8.568h.997v-8.383c0-1.662-.053-5.484-4.801-5.484-2.098 0-4.144 1.186-4.826 3.216h-.053V.448h-.996zM63.53 19.272h.997V5.721h-.997v13.551zm0-16.108h.997V.448h-.997v2.716zm4.302 9.306c0 3.98 2.282 7.118 6.584 7.118S81 16.45 81 12.47c0-4.007-2.282-7.144-6.584-7.144s-6.584 3.137-6.584 7.144zm2.36 0c0-3.322 1.89-5.167 4.224-5.167 2.335 0 4.223 1.845 4.223 5.167 0 3.296-1.888 5.14-4.223 5.14s-4.224-1.844-4.224-5.14z" />
         </symbol>
+
+        <!-- Hamburger / burger menu icon -->
         <symbol viewBox="0 0 32 32" id="occ-burger">
             <path d="M3 11.6h26.6c.3 0 .6-.3.6-.6s-.3-.6-.6-.6H3c-.3 0-.6.3-.6.6s.3.6.6.6zM29.6 21H3c-.3 0-.6.3-.6.6s.3.6.6.6h26.6c.3 0 .6-.3.6-.6s-.3-.6-.6-.6z"/>
         </symbol>
@@ -214,7 +223,7 @@
                 </button>
 
                 <a href="index.html" class="HeaderBar-logo" aria-label="Kripton â€“ go to homepage">
-                    <img src="images/logo.svg" alt="Kripton" class="HeaderBar-logoImg">
+                    <img src="images/logo.svg" alt="Kripton" class="HeaderBar-logoImg" loading="lazy">
                 </a>
 
             </div>
@@ -224,7 +233,7 @@
                  aria-hidden="true" role="dialog" aria-label="Main navigation">
                 <div class="HeaderDrawer-topBar">
                     <a href="index.html" class="HeaderDrawer-logo" aria-label="Kripton">
-                        <img src="images/logo.svg" alt="Kripton" class="HeaderBar-logoImg HeaderBar-logoImg--dark">
+                        <img src="images/logo.svg" alt="Kripton" class="HeaderBar-logoImg HeaderBar-logoImg--dark" loading="lazy">
                     </a>
                     <button class="HeaderDrawer-closeBtn js-HeaderDrawer-close"
                             aria-label="Close navigation" aria-controls="main-menu">
@@ -246,15 +255,18 @@
                                     <span>Products</span>
                                 </button>
                                 <ul class="HeaderNav-subList">
+                                    <li><a href="series.html?series=theo" class="HeaderNav-subLink">Theo Series</a></li>
+                                    <li><a href="series.html?series=mikros" class="HeaderNav-subLink">Mikros Series</a></li>
+                                    <li><a href="series.html?series=nowa" class="HeaderNav-subLink">Nowa Series</a></li>
                                     <li><a href="series.html?series=signature" class="HeaderNav-subLink">Signature Series</a></li>
                                     <li><a href="series.html?series=classic" class="HeaderNav-subLink">Classic Series</a></li>
                                     <li><a href="series.html?series=core" class="HeaderNav-subLink">Core Series</a></li>
-                                    <li><a href="series.html?series=nowa" class="HeaderNav-subLink">Nowa Series</a></li>
+                                    <li><a href="series.html?series=lunar" class="HeaderNav-subLink">Lunar Strips And Drivers</a></li>
                                     <li><a href="series.html" class="HeaderNav-subLink">All Series</a></li>
                                 </ul>
                             </div>
                         </li>
-                        <li class="HeaderNav-item"><a href="under-construction.html" class="HeaderNav-link HeaderNav-link--plain"><span>Integrations</span><svg class="HeaderNav-caret" aria-hidden="true" focusable="false"><use href="#occ-caret-right"></use></svg></a></li>
+                        <li class="HeaderNav-item"><a href="integration.html" class="HeaderNav-link HeaderNav-link--plain"><span>Integrations</span><svg class="HeaderNav-caret" aria-hidden="true" focusable="false"><use href="#occ-caret-right"></use></svg></a></li>
                         <li class="HeaderNav-item"><a href="about.html" class="HeaderNav-link HeaderNav-link--plain"><span>About Us</span><svg class="HeaderNav-caret" aria-hidden="true" focusable="false"><use href="#occ-caret-right"></use></svg></a></li>
                         <li class="HeaderNav-item"><a href="contact.html" class="HeaderNav-link HeaderNav-link--plain"><span>Contact</span><svg class="HeaderNav-caret" aria-hidden="true" focusable="false"><use href="#occ-caret-right"></use></svg></a></li>
                         <li class="HeaderNav-item">
@@ -283,47 +295,71 @@
             <nav class="HeaderMenuBar" aria-label="Desktop primary navigation">
                 <ul class="HeaderMenuBar-list">
                     <li class="HeaderMenuBar-item js-DropItem">
-                        <a href="series.html" class="HeaderMenuBar-link js-DropTrigger" aria-haspopup="true" aria-expanded="false">Products</a>
+                        <a href="#" class="HeaderMenuBar-link js-DropTrigger" aria-haspopup="true" aria-expanded="false">Products</a>
                         <div class="DropPanel js-DropPanel" aria-hidden="true">
                             <div class="DropPanel-inner DropPanel-inner--products">
                                 <div class="DropSeries">
                                     <p class="DropPanel-colTitle">Our Series</p>
                                     <div class="DropSeries-grid">
-                                        <a href="series.html?series=signature" class="DropSeries-card" data-index="0">
-                                            <div class="DropSeries-media"><img src="images/KRIPTON PRODUCT IMAGE/Render/SIGNATURE SERIES/JAZZ WHITE.png" alt="Signature Series" loading="lazy"></div>
+                                        <a href="series.html?series=theo" class="DropSeries-card" data-index="0">
+                                            <div class="DropSeries-media"><img src="images/KRIPTON PRODUCT IMAGE - Main/THEO SERIES/01.jpg" alt="Theo Series" loading="lazy"></div>
+                                            <div class="DropSeries-info"><p class="DropSeries-name">Theo Series</p><p class="DropSeries-desc">Architectural recessed lighting</p></div>
+                                            <svg class="DropSeries-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                        </a>
+                                        <a href="series.html?series=mikros" class="DropSeries-card" data-index="1">
+                                            <div class="DropSeries-media"><img src="images/KRIPTON PRODUCT IMAGE - Main/MIKROS SERIES/01.jpg" alt="Mikros Series" loading="lazy"></div>
+                                            <div class="DropSeries-info"><p class="DropSeries-name">Mikros Series</p><p class="DropSeries-desc">Miniature magnetic track</p></div>
+                                            <svg class="DropSeries-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                        </a>
+                                        <a href="series.html?series=nowa" class="DropSeries-card" data-index="2">
+                                            <div class="DropSeries-media"><img src="images/KRIPTON PRODUCT IMAGE - Main/NOWA SERIES/01.png" alt="Nowa Series" loading="lazy"></div>
+                                            <div class="DropSeries-info"><p class="DropSeries-name">Nowa Series</p><p class="DropSeries-desc">Track &amp; magnetic systems</p></div>
+                                            <svg class="DropSeries-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                        </a>
+                                        <a href="series.html?series=signature" class="DropSeries-card" data-index="3">
+                                            <div class="DropSeries-media"><img src="images/KRIPTON PRODUCT IMAGE - Main/SIGNATURE SERIES/01.png" alt="Signature Series" loading="lazy"></div>
                                             <div class="DropSeries-info"><p class="DropSeries-name">Signature Series</p><p class="DropSeries-desc">Premium architectural luminaires</p></div>
                                             <svg class="DropSeries-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                                         </a>
-                                        <a href="series.html?series=classic" class="DropSeries-card" data-index="1">
-                                            <div class="DropSeries-media"><img src="images/KRIPTON PRODUCT IMAGE/Render/CLASSIC SERIES/ANCHOR.png" alt="Classic Series" loading="lazy"></div>
+                                        <a href="series.html?series=classic" class="DropSeries-card" data-index="4">
+                                            <div class="DropSeries-media"><img src="images/KRIPTON PRODUCT IMAGE - Main/CLASSIC SERIES/01.jpg" alt="Classic Series" loading="lazy"></div>
                                             <div class="DropSeries-info"><p class="DropSeries-name">Classic Series</p><p class="DropSeries-desc">Timeless designs for every space</p></div>
                                             <svg class="DropSeries-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                                         </a>
-                                        <a href="series.html?series=core" class="DropSeries-card" data-index="2">
-                                            <div class="DropSeries-media"><img src="images/KRIPTON PRODUCT IMAGE/Render/CORE SERIES/BLAZE 12W copy.png" alt="Core Series" loading="lazy"></div>
+                                        <a href="series.html?series=core" class="DropSeries-card" data-index="5">
+                                            <div class="DropSeries-media"><img src="images/KRIPTON PRODUCT IMAGE - Main/CORE SERIES/01.jpg" alt="Core Series" loading="lazy"></div>
                                             <div class="DropSeries-info"><p class="DropSeries-name">Core Series</p><p class="DropSeries-desc">Essential lighting, refined</p></div>
                                             <svg class="DropSeries-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                                         </a>
-                                        <a href="series.html?series=nowa" class="DropSeries-card" data-index="3">
-                                            <div class="DropSeries-media"><img src="images/KRIPTON PRODUCT IMAGE/Render/NOWA SERIES/TRACK LIGHT.png" alt="Nowa Series" loading="lazy"></div>
-                                            <div class="DropSeries-info"><p class="DropSeries-name">Nowa Series</p><p class="DropSeries-desc">Track &amp; magnetic systems</p></div>
+                                        <a href="series.html?series=lunar" class="DropSeries-card" data-index="6">
+                                            <div class="DropSeries-media"><img src="images/KRIPTON PRODUCT IMAGE - Main/LUNAR STRIPS AND DRIVER/01.jpg" alt="Lunar Strips And Drivers" loading="lazy"></div>
+                                            <div class="DropSeries-info"><p class="DropSeries-name">Lunar Strips And Drivers</p><p class="DropSeries-desc">LED strip &amp; driver systems</p></div>
+                                            <svg class="DropSeries-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                        </a>
+                                        <a href="series.html" class="DropSeries-card DropSeries-card--all" data-index="7">
+                                            <div class="DropSeries-media"><img src="images/KRIPTON PRODUCT IMAGE - Main/kripton - image.png" alt="All Series" loading="lazy"></div>
+                                            <div class="DropSeries-info"><p class="DropSeries-name">View All Series</p><p class="DropSeries-desc">Explore the full collection</p></div>
                                             <svg class="DropSeries-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="DropPreview">
                                     <div class="DropPreview-frame">
-                                        <img class="DropPreview-img is-active" src="images/KRIPTON PRODUCT IMAGE/EDITED EMAGE/JAZZ 01.jpg" alt="Signature Series preview" data-preview="0">
-                                        <img class="DropPreview-img" src="images/KRIPTON PRODUCT IMAGE/EDITED EMAGE/ARCH.jpg" alt="Classic Series preview" data-preview="1">
-                                        <img class="DropPreview-img" src="images/KRIPTON PRODUCT IMAGE/EDITED EMAGE/BLAZE.jpg" alt="Core Series preview" data-preview="2">
-                                        <img class="DropPreview-img" src="images/KRIPTON PRODUCT IMAGE/EDITED EMAGE/GLINT.jpg" alt="Nowa Series preview" data-preview="3">
+                                        <img class="DropPreview-img is-active" src="images/KRIPTON PRODUCT IMAGE - Main/THEO SERIES/01.jpg" alt="Theo Series" data-preview="0" loading="lazy">
+                                        <img class="DropPreview-img" src="images/KRIPTON PRODUCT IMAGE - Main/MIKROS SERIES/01.jpg" alt="Mikros Series" data-preview="1" loading="lazy">
+                                        <img class="DropPreview-img" src="images/KRIPTON PRODUCT IMAGE - Main/NOWA SERIES/01.png" alt="Nowa Series" data-preview="2" loading="lazy">
+                                        <img class="DropPreview-img" src="images/KRIPTON PRODUCT IMAGE - Main/SIGNATURE SERIES/01.png" alt="Signature Series" data-preview="3" loading="lazy">
+                                        <img class="DropPreview-img" src="images/KRIPTON PRODUCT IMAGE - Main/CLASSIC SERIES/01.jpg" alt="Classic Series" data-preview="4" loading="lazy">
+                                        <img class="DropPreview-img" src="images/KRIPTON PRODUCT IMAGE - Main/CORE SERIES/01.jpg" alt="Core Series" data-preview="5" loading="lazy">
+                                        <img class="DropPreview-img" src="images/KRIPTON PRODUCT IMAGE - Main/LUNAR STRIPS AND DRIVER/01.jpg" alt="Lunar Strips And Drivers" data-preview="6" loading="lazy">
+                                        <img class="DropPreview-img" src="images/KRIPTON PRODUCT IMAGE - Main/kripton - image.png" alt="All Series" data-preview="7" loading="lazy">
                                     </div>
                                     <a href="series.html" class="DropPreview-cta">View all series →</a>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <li class="HeaderMenuBar-item"><a href="under-construction.html" class="HeaderMenuBar-link">Integrations</a></li>
+                    <li class="HeaderMenuBar-item"><a href="integration.html" class="HeaderMenuBar-link">Integrations</a></li>
                     <li class="HeaderMenuBar-item"><a href="about.html" class="HeaderMenuBar-link">About Us</a></li>
                     <li class="HeaderMenuBar-item"><a href="contact.html" class="HeaderMenuBar-link">Contact</a></li>
                     <li class="HeaderMenuBar-item">
@@ -344,8 +380,8 @@
 
             <!-- Decorative product image -->
             <img class="uc-deco"
-                 src="images/KRIPTON PRODUCT IMAGE/Render/SIGNATURE SERIES/JAZZ WHITE.png"
-                 alt="" aria-hidden="true">
+                 src="images/KRIPTON PRODUCT IMAGE - Main/SIGNATURE SERIES/PNG/JAZZ WHITE.png"
+                 alt="" aria-hidden="true" loading="lazy">
 
             <div class="uc-content">
                 <div class="uc-line"></div>
@@ -402,37 +438,40 @@
                 <nav aria-label="Products navigation">
                     <p class="footer-col-title">Products</p>
                     <ul class="footer-links">
+                        <li><a href="series.html?series=theo">Theo Series</a></li>
+                        <li><a href="series.html?series=mikros">Mikros Series</a></li>
+                        <li><a href="series.html?series=nowa">Nowa Series</a></li>
                         <li><a href="series.html?series=signature">Signature Series</a></li>
                         <li><a href="series.html?series=classic">Classic Series</a></li>
                         <li><a href="series.html?series=core">Core Series</a></li>
-                        <li><a href="series.html?series=nowa">Nowa Series</a></li>
+                        <li><a href="series.html?series=lunar">Lunar Strips And Drivers</a></li>
+                        <li><a href="series.html">All Series</a></li>
                     </ul>
                 </nav>
                 <nav aria-label="Company navigation">
                     <p class="footer-col-title">Company</p>
                     <ul class="footer-links">
+                        <li><a href="series.html">Products</a></li>
+                        <li><a href="under-construction.html">Integrations</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="#">Integrations</a></li>
-                        <li><a href="#">For Professionals</a></li>
-                        <li><a href="#">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
                 <nav aria-label="Service navigation">
-                    <p class="footer-col-title">Service</p>
+                    <p class="footer-col-title">Integrations</p>
                     <ul class="footer-links">
-                        <li><a href="#">Dealer Finder</a></li>
-                        <li><a href="#">Book a Visit</a></li>
+                        <li><a href="under-construction.html">Dali</a></li>
+                        <li><a href="under-construction.html">Book a Visit</a></li>
                         <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#">Brochure</a></li>
+                        <li><a href="under-construction.html">Brochure</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="footer-bottom">
                 <p class="footer-copyright">&copy; 2026 Kripton. All rights reserved.</p>
-                <nav class="footer-legal" aria-label="Legal navigation">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Imprint</a>
-                    <a href="#">Cookie Settings</a>
+                <nav class="footer-legal" aria-label="Legal navigation"><a href="under-construction.html">Privacy Policy</a>
+                    <a href="under-construction.html">Imprint</a>
+                    <a href="under-construction.html">Cookie Settings</a>
                 </nav>
             </div>
         </div>

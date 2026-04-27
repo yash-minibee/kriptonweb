@@ -70,7 +70,7 @@ h4 {
 }
 
 h1 {
-    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
 }
 
 h2 {
@@ -209,16 +209,27 @@ p {
     right: 0;
     z-index: 1000;
     background: transparent;
-    transition: background var(--ease), transform 0.35s ease;
+    transition: background 0.4s ease, transform 0.35s ease;
 }
 
 .Header.is-hidden {
     transform: translateY(-100%);
 }
 
-.Header.is-scrolled {
-    background: var(--white);
-    box-shadow: 0 1px 0 var(--gray-mid);
+/* Desktop — always transparent, even after scroll */
+@media (min-width: 1024px) {
+    .Header.is-scrolled {
+        background: transparent;
+        box-shadow: none;
+    }
+}
+
+/* Mobile/tablet — solid white on scroll for readability */
+@media (max-width: 1023px) {
+    .Header.is-scrolled {
+        background: var(--white);
+        box-shadow: 0 1px 0 var(--gray-mid);
+    }
 }
 
 .Header-overlay {
@@ -689,24 +700,31 @@ p {
 
 /* DropPanel */
 .DropPanel {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(8px);
+    position: fixed;
+    top: auto;
+    left: 0;
+    right: 0;
+    width: 100%;
     background: var(--white);
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
     opacity: 0;
     pointer-events: none;
-    transition: opacity var(--ease), transform var(--ease);
-    min-width: 700px;
+    transition: opacity var(--ease);
     z-index: 700;
 }
 
 .js-DropItem:hover .DropPanel,
 .DropPanel[aria-hidden="false"] {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
     pointer-events: auto;
+}
+
+.DropPanel-inner--products {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    padding: 2rem;
+    gap: 0;
 }
 
 .DropPanel-inner {
@@ -714,9 +732,25 @@ p {
     gap: 0;
 }
 
-.DropPanel-inner--products {
-    padding: 2rem;
-    gap: 2rem;
+/* Left 50% — series names, 3-column grid */
+.DropSeries {
+    flex: 0 0 50%;
+    padding-right: 2rem;
+    border-right: 1px solid var(--gray-mid);
+}
+
+.DropSeries-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.25rem;
+}
+
+/* Right 50% — preview image */
+.DropPreview {
+    flex: 0 0 50%;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .DropPanel-colTitle {
@@ -730,12 +764,6 @@ p {
 
 .DropSeries {
     flex: 1;
-}
-
-.DropSeries-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
 }
 
 .DropSeries-card {
@@ -762,12 +790,20 @@ p {
 .DropSeries-media img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
-.DropSeries-info {
-    flex: 1;
+/* View All card — same as other cards */
+.DropSeries-card--all {
+    background: transparent;
+    justify-content: flex-start;
+    border: none;
+    border-radius: 0;
 }
+
+.DropSeries-card--all .DropSeries-name { color: var(--black); }
+
+.DropSeries-info { flex: 1; }
 
 .DropSeries-name {
     font-size: 0.85rem;
@@ -808,7 +844,8 @@ p {
     flex: 1;
     overflow: hidden;
     background: var(--gray-light);
-    min-height: 200px;
+    min-height: 420px;
+    border-radius: 4px;
 }
 
 .DropPreview-img {
@@ -816,7 +853,8 @@ p {
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    background: var(--gray-light);
     opacity: 0;
     transition: opacity 0.4s ease;
 }
@@ -979,7 +1017,8 @@ p {
     overflow: hidden;
     cursor: grab;
     user-select: none;
-    background: #5c5650;
+    background: #000;
+  
 }
 
 .gallery-strip:active {
@@ -988,7 +1027,7 @@ p {
 
 .gallery-track {
     display: flex;
-    gap: 0.5rem;
+    gap: 0;
     will-change: transform;
 }
 
@@ -999,14 +1038,15 @@ p {
     height: 70vh;
     min-width: 280px;
     overflow: hidden;
+      border-left: 1px solid #fff
 }
 
 .gallery-panel-bg {
     position: absolute;
     inset: 0;
-    background-size: 75%;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position: center 30%;
+    background-position: center;
     background-color: #5c5650;
 }
 
@@ -1023,6 +1063,17 @@ p {
     right: 0;
     padding: 1.5rem;
     z-index: 2;
+}
+
+.gallery-panel-num {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 200;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.25);
+    margin-bottom: 0.4rem;
+    font-family: var(--font);
+    line-height: 1;
 }
 
 .gallery-panel-title {
